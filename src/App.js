@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Nav from "./components/Nav";
+import Singin from "./components/Singin";
+import Table from "./components/Table";
+import { useSelector } from "react-redux";
+import Control from "./components/Control";
 
 function App() {
+  const store = useSelector((store) => store.CustomerSlice.name);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Nav />
+      {store == "" ? (
+        <Singin />
+      ) : (
+        <>
+          <Control /> <Table />
+        </>
+      )}
+    </>
   );
 }
 
